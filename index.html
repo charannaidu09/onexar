@@ -1148,19 +1148,14 @@ if(!RM&&'IntersectionObserver' in window){
 /* hero banners */
 (function(){
   const sl=$$('#banners .bn'),dots=$$('#bnDots button');if(!sl.length)return;
-  const box=$('#bnDots');if(RM)box.classList.add('rm');
-  let i=0,t=null,hov=false;
+    let i=0,t=null,hov=false;
   function go(n){i=(n+sl.length)%sl.length;sl.forEach((e,k)=>{e.classList.toggle('on',k===i);e.setAttribute('aria-hidden',k===i?'false':'true')});
     dots.forEach((d,k)=>{d.classList.remove('on');if(k===i){void d.offsetWidth;d.classList.add('on')}});}
-  function play(){clearTimeout(t);if(RM||hov||document.hidden)return;t=setTimeout(()=>{go(i+1);play()},2000)}
+  function play(){clearTimeout(t);if(document.hidden)return;t=setTimeout(()=>{go(i+1);play()},2000)}
   $('#bnNext').addEventListener('click',()=>{go(i+1);play()});
   $('#bnPrev').addEventListener('click',()=>{go(i-1);play()});
   dots.forEach((d,k)=>d.addEventListener('click',()=>{go(k);play()}));
   const b=$('#banners');
-  b.addEventListener('mouseenter',()=>{hov=true;clearTimeout(t)});
-  b.addEventListener('mouseleave',()=>{hov=false;go(i);play()});
-  b.addEventListener('focusin',()=>{hov=true;clearTimeout(t)});
-  b.addEventListener('focusout',()=>{hov=false;play()});
   b.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){go(i+1);play()}if(e.key==='ArrowLeft'){go(i-1);play()}});
   let x0=null;
   b.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
