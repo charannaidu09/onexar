@@ -479,7 +479,7 @@ details p{padding:0 54px 26px 0;font-size:15.5px;max-width:64ch}
 .bn-dots{display:flex;gap:8px}
 .bn-dots button{width:34px;height:4px;border-radius:4px;background:rgba(255,255,255,.22);border:0;padding:0;cursor:pointer;position:relative;overflow:hidden}
 .bn-dots button:after{content:"";position:absolute;inset:0;background:var(--red);transform:scaleX(0);transform-origin:left}
-.bn-dots button.on:after{transform:scaleX(1);transition:transform 6s linear}
+.bn-dots button.on:after{transform:scaleX(1);transition:transform 2s linear}
 .bn-dots.rm button.on:after{transition:none}
 .bn-arr{display:flex;gap:8px}
 .bn-arr button{width:40px;height:40px;border-radius:50%;border:1px solid var(--d-line);background:var(--d-card);color:#fff;display:grid;place-items:center;cursor:pointer;transition:background .25s,border-color .25s}
@@ -512,6 +512,18 @@ details p{padding:0 54px 26px 0;font-size:15.5px;max-width:64ch}
 @media (max-width:760px){.bn{grid-template-columns:1fr;min-height:0;gap:18px}.bn-art{justify-items:start;text-align:left}.bn-art b{font-size:64px}.bn-art em{margin-top:6px}.bn-art .stack{width:100%}}
 @media (max-width:640px){.blog-grid{grid-template-columns:1fr}.vid .play{width:68px;height:68px}}
 @media (prefers-reduced-motion:reduce){.bn{transition:none}}
+
+.bn-art svg{width:100%;max-width:400px;height:auto;overflow:visible}
+.bn-art text{font-family:var(--fh)}
+.fl{animation:fl 3s ease-in-out infinite}.fl.d2{animation-delay:-1s}.fl.d3{animation-delay:-2s}
+@keyframes fl{50%{transform:translateY(-8px)}}
+.spin{transform-origin:180px 120px;animation:sp 14s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.draw{stroke-dasharray:600;animation:dw 2s ease-out infinite}
+@keyframes dw{from{stroke-dashoffset:600}60%,to{stroke-dashoffset:0}}
+.dash{animation:ds 1s linear infinite}@keyframes ds{to{stroke-dashoffset:-20}}
+@media (max-width:760px){.bn-art svg{max-width:300px}}
+@media (prefers-reduced-motion:reduce){.fl,.spin,.draw,.dash{animation:none}}
 </style>
 <noscript><style>.rv{opacity:1;transform:none}</style></noscript>
 </head>
@@ -619,7 +631,7 @@ details p{padding:0 54px 26px 0;font-size:15.5px;max-width:64ch}
       <div class="float f2"><small>Execution</small><b>STP + ECN</b><span>Direct market access</span></div>
       <div class="term">
         <div class="term-top">
-          <div class="sym"><span class="coin">Au</span><div><strong>XAUUSD</strong><span>Gold Spot · MT5</span></div></div>
+          <div class="sym"><span class="coin">Au</span><div><strong>XAUUSD</strong><span id="tsub">Gold Spot · MT5</span></div></div>
           <div class="tf"><b>M15</b><b class="on">H1</b><b>H4</b><b>D1</b></div>
         </div>
         <div class="term-price"><span class="p num" id="tp">2,412.60</span><span class="chg up num" id="tc">+0.42%</span></div>
@@ -636,19 +648,37 @@ details p{padding:0 54px 26px 0;font-size:15.5px;max-width:64ch}
     <div class="bn-view" aria-live="off">
       <article class="bn b1 on" aria-roledescription="slide" aria-label="1 of 4">
         <div><small>Welcome and withdrawal bonus</small><h3>50% welcome bonus. 100% withdrawal bonus.</h3><p>Start with extra trading capital and keep rewards flowing when you withdraw. Terms apply.</p><a class="btn btn-red" href="https://www.onexar.com/">Claim your bonus <svg><use href="#i-arrow"/></svg></a></div>
-        <div class="bn-art" aria-hidden="true"><div><b>50%</b><em>Welcome bonus</em></div></div>
+        <div class="bn-art" aria-hidden="true"><svg viewBox="0 0 360 240" role="img" aria-hidden="true"><defs><linearGradient id="gc1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7DE9A"/><stop offset="1" stop-color="#B8862B"/></linearGradient></defs>
+<circle cx="180" cy="120" r="108" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.22)"/><circle class="spin" cx="180" cy="120" r="80" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.4)" stroke-dasharray="3 8" stroke-linecap="round"/>
+<text x="180" y="138" text-anchor="middle" font-size="64" font-weight="800" fill="#fff" letter-spacing="-2">50%</text><text x="180" y="162" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" fill-opacity=".8" letter-spacing="2.4">WELCOME BONUS</text>
+<g class="fl"><circle cx="58" cy="72" r="26" fill="url(#gc1)"/><circle cx="58" cy="72" r="19" fill="none" stroke="#fff" stroke-opacity=".5"/><text x="58" y="81" text-anchor="middle" font-size="24" font-weight="800" fill="#6b4a0c">$</text></g>
+<g class="fl d2"><circle cx="318" cy="186" r="20" fill="url(#gc1)"/><text x="318" y="194" text-anchor="middle" font-size="19" font-weight="800" fill="#6b4a0c">$</text></g>
+<g class="fl d3"><rect x="196" y="14" width="156" height="34" rx="17" fill="#fff"/><text x="274" y="36" text-anchor="middle" font-size="13" font-weight="800" fill="#E22026">+100% on withdrawal</text></g></svg></div>
       </article>
       <article class="bn b2" aria-roledescription="slide" aria-label="2 of 4">
         <div><small>Exclusive gold offer</small><h3>Trade gold with leverage up to 1:500</h3><p>Special XAUUSD leverage on MetaTrader 5, with raw spreads and fast execution.</p><a class="btn btn-red" href="https://www.onexar.com/">Trade gold <svg><use href="#i-arrow"/></svg></a></div>
-        <div class="bn-art" aria-hidden="true"><div><b class="gold">1:500</b><em>XAUUSD leverage</em></div></div>
+        <div class="bn-art" aria-hidden="true"><svg viewBox="0 0 360 240" role="img" aria-hidden="true"><defs><linearGradient id="gc2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBE8AE"/><stop offset="1" stop-color="#D9A93F"/></linearGradient><linearGradient id="ar2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7DE9A" stop-opacity=".35"/><stop offset="1" stop-color="#F7DE9A" stop-opacity="0"/></linearGradient></defs>
+<path d="M14 122 L70 98 L118 108 L176 64 L236 76 L338 22 V130 H14Z" fill="url(#ar2)"/><polyline class="draw" points="14,122 70,98 118,108 176,64 236,76 338,22" fill="none" stroke="#F7DE9A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="338" cy="22" r="6" fill="#fff"/>
+<g class="fl"><g transform="translate(18 176)"><path d="M12 0H88L100 26H0Z" fill="url(#gc2)"/><rect y="26" width="100" height="16" rx="3" fill="#B8862B"/></g><g transform="translate(124 176)"><path d="M12 0H88L100 26H0Z" fill="url(#gc2)"/><rect y="26" width="100" height="16" rx="3" fill="#B8862B"/></g><g transform="translate(71 132)"><path d="M12 0H88L100 26H0Z" fill="url(#gc2)"/><rect y="26" width="100" height="16" rx="3" fill="#B8862B"/></g></g>
+<text x="346" y="210" text-anchor="end" font-size="40" font-weight="800" fill="#F7DE9A" letter-spacing="-1">1:500</text><text x="346" y="170" text-anchor="end" font-size="11" font-weight="700" fill="#fff" fill-opacity=".75" letter-spacing="2">GOLD LEVERAGE</text></svg></div>
       </article>
       <article class="bn b3" aria-roledescription="slide" aria-label="3 of 4">
         <div><small>Swap refund</small><h3>Trade and earn with the Swap Refund programme</h3><p>Get overnight swap charges returned to you as you trade. Terms apply.</p><a class="btn btn-red" href="https://www.onexar.com/">See how it works <svg><use href="#i-arrow"/></svg></a></div>
-        <div class="bn-art" aria-hidden="true"><div class="stack"><span>Trade<i>Step 1</i></span><span>Hold overnight<i>Step 2</i></span><span>Swap refunded<i>Step 3</i></span></div></div>
+        <div class="bn-art" aria-hidden="true"><svg viewBox="0 0 360 240" role="img" aria-hidden="true"><defs><linearGradient id="gc3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7DE9A"/><stop offset="1" stop-color="#B8862B"/></linearGradient></defs>
+<g class="spin"><path d="M180 30 A90 90 0 0 1 270 120" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M262 104 L270 124 L286 108Z" fill="#fff"/><path d="M180 210 A90 90 0 0 1 90 120" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M98 136 L90 116 L74 132Z" fill="#fff"/><path d="M270 120 A90 90 0 0 1 180 210" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/><path d="M90 120 A90 90 0 0 1 180 30" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/></g>
+<circle cx="180" cy="120" r="54" fill="url(#gc3)"/><circle cx="180" cy="120" r="44" fill="none" stroke="#fff" stroke-opacity=".5"/><text x="180" y="138" text-anchor="middle" font-size="52" font-weight="800" fill="#6b4a0c">$</text>
+<g class="fl"><path d="M62 52a22 22 0 1 0 22 28 17 17 0 1 1-22-28z" fill="#fff" fill-opacity=".9"/></g>
+<g class="fl d3"><rect x="236" y="190" width="116" height="32" rx="16" fill="#E22026"/><text x="294" y="211" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">Swap refunded</text></g></svg></div>
       </article>
       <article class="bn b4" aria-roledescription="slide" aria-label="4 of 4">
         <div><small>Smart investing</small><h3>Copy Trading, PAMM, MAM and Reverse Copy Trading</h3><p>Let experienced managers trade for you, or take the opposite side of a trader's positions.</p><a class="btn btn-red" href="#copy">Explore managed accounts <svg><use href="#i-arrow"/></svg></a></div>
-        <div class="bn-art" aria-hidden="true"><div class="stack"><span>Copy Trading<i>Mirror</i></span><span>PAMM<i>Pooled</i></span><span>MAM<i>Multi</i></span><span>Reverse Copy<i>Opposite</i></span></div></div>
+        <div class="bn-art" aria-hidden="true"><svg viewBox="0 0 360 240" role="img" aria-hidden="true">
+<g stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-dasharray="4 6"><line x1="180" y1="120" x2="86" y2="52"/><line x1="180" y1="120" x2="274" y2="52"/><line x1="180" y1="120" x2="86" y2="188"/><line class="dash" x1="180" y1="120" x2="274" y2="188" stroke="#E22026" stroke-width="3"/></g>
+<circle cx="180" cy="120" r="40" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.4)"/><circle cx="180" cy="120" r="30" fill="#E22026"/><text x="180" y="125" text-anchor="middle" font-size="13" font-weight="800" fill="#fff" letter-spacing="1">YOU</text>
+<g class="fl"><rect x="22" y="34" width="128" height="38" rx="19" fill="#fff"/><text x="86" y="58" text-anchor="middle" font-size="13" font-weight="800" fill="#14181C">Copy Trading</text></g>
+<g class="fl d2"><rect x="238" y="34" width="86" height="38" rx="19" fill="#fff"/><text x="281" y="58" text-anchor="middle" font-size="13" font-weight="800" fill="#14181C">PAMM</text></g>
+<g class="fl d3"><rect x="40" y="170" width="86" height="38" rx="19" fill="#fff"/><text x="83" y="194" text-anchor="middle" font-size="13" font-weight="800" fill="#14181C">MAM</text></g>
+<g class="fl"><rect x="210" y="170" width="138" height="38" rx="19" fill="#E22026" stroke="#fff" stroke-opacity=".6"/><text x="279" y="194" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">Reverse Copy</text></g></svg></div>
       </article>
     </div>
     <div class="bn-ctl">
@@ -847,7 +877,7 @@ details p{padding:0 54px 26px 0;font-size:15.5px;max-width:64ch}
         <div class="notch"></div>
         <h4>Watchlist</h4>
         <div class="q"><div><strong>EURUSD</strong><small>Euro / US Dollar</small></div><b class="up num">1.0842</b></div>
-        <div class="q"><div><strong>XAUUSD</strong><small>Gold Spot</small></div><b class="up num">2,412.60</b></div>
+        <div class="q"><div><strong>XAUUSD</strong><small>Gold Spot</small></div><b class="up num" id="qg">2,412.60</b></div>
         <div class="q"><div><strong>GBPUSD</strong><small>Pound / US Dollar</small></div><b class="dn num">1.2715</b></div>
         <div class="q"><div><strong>USDJPY</strong><small>US Dollar / Yen</small></div><b class="up num">151.32</b></div>
         <div class="q"><div><strong>BTCUSD</strong><small>Bitcoin</small></div><b class="dn num">67,250</b></div>
@@ -1122,7 +1152,7 @@ if(!RM&&'IntersectionObserver' in window){
   let i=0,t=null,hov=false;
   function go(n){i=(n+sl.length)%sl.length;sl.forEach((e,k)=>{e.classList.toggle('on',k===i);e.setAttribute('aria-hidden',k===i?'false':'true')});
     dots.forEach((d,k)=>{d.classList.remove('on');if(k===i){void d.offsetWidth;d.classList.add('on')}});}
-  function play(){clearTimeout(t);if(RM||hov||document.hidden)return;t=setTimeout(()=>{go(i+1);play()},6000)}
+  function play(){clearTimeout(t);if(RM||hov||document.hidden)return;t=setTimeout(()=>{go(i+1);play()},2000)}
   $('#bnNext').addEventListener('click',()=>{go(i+1);play()});
   $('#bnPrev').addEventListener('click',()=>{go(i-1);play()});
   dots.forEach((d,k)=>d.addEventListener('click',()=>{go(k);play()}));
@@ -1151,9 +1181,12 @@ if(!RM&&'IntersectionObserver' in window){
 })();
 
 /* hero candlestick chart (illustrative) */
+const chartSvg=$('#chart');let drawChart;
 (function(){
-  const svg=$('#chart'),W=560,H=250,N=38,r=rng(11);
-  const c=[];let p=2396;
+  const svg=chartSvg,W=560,H=250,N=38;
+  drawChart=function(base){
+  svg.innerHTML='';const r=rng(11);
+  const c=[];let p=base-16;
   for(let i=0;i<N;i++){const o=p,d=(r()-.42)*9,cl=o+d,h=Math.max(o,cl)+r()*4,l=Math.min(o,cl)-r()*4;c.push({o,c:cl,h,l});p=cl}
   const lo=Math.min(...c.map(x=>x.l))-3,hi=Math.max(...c.map(x=>x.h))+3,Y=v=>14+(1-(v-lo)/(hi-lo))*(H-44),bw=(W-70)/N;
   const defs=el('defs',{});const g=el('linearGradient',{id:'ar',x1:0,y1:0,x2:0,y2:1});
@@ -1170,8 +1203,9 @@ if(!RM&&'IntersectionObserver' in window){
   const last=c[N-1],ly=Y(last.c);
   svg.append(el('line',{x1:0,x2:W,y1:ly,y2:ly,stroke:'#fff','stroke-opacity':.4,'stroke-dasharray':'3 4'}));
   const tag=el('g',{});tag.append(el('rect',{x:W-66,y:ly-10,width:62,height:20,rx:5,fill:'#E22026'}));
-  const tt=el('text',{x:W-35,y:ly+4,'text-anchor':'middle',fill:'#fff','font-size':11,'font-weight':700,'font-family':'Hanken Grotesk, sans-serif'});tt.textContent='2,412.6';tag.append(tt);svg.append(tag);
-  const st=document.createElement('style');st.textContent='@keyframes cin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}'+(RM?'#chart g{opacity:1!important;animation:none!important}':'');document.head.append(st);
+  const tt=el('text',{x:W-35,y:ly+4,'text-anchor':'middle',fill:'#fff','font-size':11,'font-weight':700,'font-family':'Hanken Grotesk, sans-serif'});tt.textContent=fmt(last.c,1);tag.append(tt);svg.append(tag);
+  if(!document.getElementById('cinst')){const st=document.createElement('style');st.id='cinst';st.textContent='@keyframes cin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}'+(RM?'#chart g{opacity:1!important;animation:none!important}':'');document.head.append(st)}
+  };drawChart(2412.6);
 })();
 
 /* ticker + live-feel prices (illustrative) */
@@ -1181,14 +1215,30 @@ const state=SY.map(s=>({n:s[0],base:s[1],v:s[1],d:s[2],ch:(R()-.45)*.9}));
 const row=()=>state.map((s,i)=>`<div class="tick"><strong>${s.n}</strong><span class="v num" data-i="${i}">${fmt(s.v,s.d)}</span><span class="c num ${s.ch>=0?'up':'dn'}" data-c="${i}">${s.ch>=0?'+':''}${s.ch.toFixed(2)}%</span></div>`).join('');
 tr.innerHTML=row()+row();
 const tp=$('#tp'),tc=$('#tc'),ts=$('#ts'),tb=$('#tb');
+let live=false;
+const qg=$('#qg'),note=$('.ticker-note'),tsub=$('#tsub');
+function showGold(){const v=state[3].v;tp.textContent=fmt(v,2);tb.textContent=fmt(v,2);ts.textContent=fmt(v-.11,2);$$('[data-i="3"]').forEach(e=>e.textContent=fmt(v,2));if(qg)qg.textContent=fmt(v,2)}
 if(!RM)setInterval(()=>{
-  const i=Math.floor(Math.random()*state.length),s=state[i];
+  const i=Math.floor(Math.random()*state.length),s=state[i];if(live&&i===3)return;
   s.v=Math.max(s.base*.985,Math.min(s.base*1.015,s.v*(1+(Math.random()-.5)*.0006)));s.ch+=(Math.random()-.5)*.04;
   $$(`[data-i="${i}"]`).forEach(e=>e.textContent=fmt(s.v,s.d));
   $$(`[data-c="${i}"]`).forEach(e=>{e.textContent=(s.ch>=0?'+':'')+s.ch.toFixed(2)+'%';e.className='c num '+(s.ch>=0?'up':'dn')});
-  const g=state[3];g.v=Math.max(2405,Math.min(2420,g.v+(Math.random()-.5)*.5));
-  tp.textContent=fmt(g.v,2);tb.textContent=fmt(g.v,2);ts.textContent=fmt(g.v-.11,2);
+  if(!live){const g=state[3];g.v=Math.max(2405,Math.min(2420,g.v+(Math.random()-.5)*.5));showGold()}
 },900);
+
+/* live gold spot (falls back to illustrative figures if the feed is unreachable) */
+async function goldLive(){
+  try{
+    const ctl=new AbortController(),to=setTimeout(()=>ctl.abort(),6000);
+    const r=await fetch('https://api.gold-api.com/price/XAU',{cache:'no-store',signal:ctl.signal});clearTimeout(to);
+    if(!r.ok)throw 0;const j=await r.json(),v=+j.price;if(!(v>100&&v<100000))throw 0;
+    const g=state[3],first=!live;live=true;g.base=g.v=v;
+    if(first){drawChart(v);tc.textContent='LIVE';tc.className='chg up num';if(tsub)tsub.textContent='Gold Spot · live price';
+      if(note)note.textContent='Gold (XAUUSD) shows a live spot reference price, not an Onexar execution quote. Other prices on this page are illustrative.'}
+    showGold();
+  }catch(e){}
+}
+goldLive();setInterval(goldLive,15000);
 
 /* sparklines */
 $$('.spark').forEach(s=>{
