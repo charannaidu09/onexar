@@ -233,9 +233,10 @@ section{padding-block:var(--sec);position:relative}
 .checks svg{width:20px;height:20px;color:var(--red);flex:none;margin-top:3px}
 .checks strong{font-family:var(--fh);font-weight:650;color:var(--ink)}
 .dark .checks strong{color:#fff}
-.tabs3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px}
+.tabs3{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:30px}
 .tabs3 div{padding:18px;border-radius:14px;border:1px solid var(--d-line);background:var(--d-card)}
 .tabs3 strong{display:block;font-family:var(--fh);font-weight:700;font-size:17px;color:#fff}
+.tabs3 em{font-style:normal;font-family:var(--fh);font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--red);padding:2px 7px;border-radius:99px;margin-left:8px;vertical-align:2px}
 .tabs3 span{font-size:13.5px;color:var(--d-mute);line-height:1.45;display:block;margin-top:4px}
 
 /* leaderboard mock */
@@ -449,6 +450,68 @@ details p{padding:0 54px 26px 0;font-size:15.5px;max-width:64ch}
   .ticker-track,.float{animation:none}
   *{transition-duration:.01ms!important}
 }
+
+/* hero banners */
+.banners{position:relative;margin-top:clamp(44px,5vw,72px)}
+.bn-view{display:grid;border-radius:22px;overflow:hidden;border:1px solid var(--d-line);box-shadow:0 40px 80px -44px rgba(0,0,0,.9)}
+.bn{grid-area:1/1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:center;gap:24px;padding:clamp(28px,4vw,52px) clamp(24px,4vw,56px);opacity:0;visibility:hidden;transition:opacity .6s var(--ease),visibility .6s;position:relative;overflow:hidden;isolation:isolate;min-height:280px}
+.bn.on{opacity:1;visibility:visible}
+.bn:before{content:"";position:absolute;inset:0;z-index:-2}
+.bn:after{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:linear-gradient(90deg,transparent 30%,#000);mask-image:linear-gradient(90deg,transparent 30%,#000)}
+.bn.b1:before{background:linear-gradient(115deg,#7a0d10 0%,var(--red) 100%)}
+.bn.b2:before{background:radial-gradient(70% 120% at 100% 0,rgba(242,201,107,.28),transparent 60%),linear-gradient(115deg,#0D1013,#2a0a08)}
+.bn.b3:before{background:radial-gradient(60% 100% at 100% 100%,rgba(226,32,38,.45),transparent 65%),linear-gradient(115deg,#14181C,#1E242A)}
+.bn.b4:before{background:linear-gradient(115deg,#550401 0%,#14181C 100%)}
+.bn small{font-family:var(--fh);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+.bn h3{font-family:var(--fh);font-weight:750;font-size:clamp(24px,3vw,38px);line-height:1.12;letter-spacing:-.02em;color:#fff;margin-top:12px;max-width:520px}
+.bn p{margin-top:12px;color:rgba(255,255,255,.82);font-size:16px;max-width:480px}
+.bn .btn{margin-top:22px}
+.bn .btn-red{background:#fff;color:var(--red)}
+.bn.b1 .btn-red:hover{background:var(--ink);color:#fff}
+.bn-art{display:grid;place-items:center;text-align:center;font-family:var(--fh);color:#fff}
+.bn-art b{display:block;font-weight:800;font-size:clamp(64px,9vw,128px);line-height:.95;letter-spacing:-.04em}
+.bn-art em{display:block;font-style:normal;font-weight:650;font-size:14px;letter-spacing:.12em;text-transform:uppercase;opacity:.8;margin-top:10px}
+.bn-art .gold{background:linear-gradient(135deg,#F7DE9A,#B8862B);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bn-art .stack{display:grid;gap:10px;width:min(100%,300px)}
+.bn-art .stack span{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);font-weight:650;font-size:16px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.bn-art .stack span i{font-style:normal;font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+.bn-ctl{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:16px}
+.bn-dots{display:flex;gap:8px}
+.bn-dots button{width:34px;height:4px;border-radius:4px;background:rgba(255,255,255,.22);border:0;padding:0;cursor:pointer;position:relative;overflow:hidden}
+.bn-dots button:after{content:"";position:absolute;inset:0;background:var(--red);transform:scaleX(0);transform-origin:left}
+.bn-dots button.on:after{transform:scaleX(1);transition:transform 6s linear}
+.bn-dots.rm button.on:after{transition:none}
+.bn-arr{display:flex;gap:8px}
+.bn-arr button{width:40px;height:40px;border-radius:50%;border:1px solid var(--d-line);background:var(--d-card);color:#fff;display:grid;place-items:center;cursor:pointer;transition:background .25s,border-color .25s}
+.bn-arr button:hover{background:var(--red);border-color:var(--red)}
+.bn-arr svg{width:16px;height:16px}
+.bn-arr .pv svg{transform:rotate(180deg)}
+
+/* about video */
+.about{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,5vw,72px);align-items:center}
+.about .lead{margin-top:16px}
+.vid{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#0D1013;box-shadow:0 40px 80px -40px rgba(20,24,28,.55);border:1px solid var(--line)}
+.vid img,.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.vid button{position:absolute;inset:0;width:100%;border:0;background:linear-gradient(180deg,rgba(13,16,19,.1),rgba(13,16,19,.55));cursor:pointer;display:grid;place-items:center}
+.vid .play{width:84px;height:84px;border-radius:50%;background:var(--red);display:grid;place-items:center;box-shadow:0 0 0 12px rgba(226,32,38,.25);transition:transform .35s var(--ease),box-shadow .35s}
+.vid button:hover .play{transform:scale(1.08);box-shadow:0 0 0 18px rgba(226,32,38,.22)}
+.vid .play svg{width:28px;height:28px;margin-left:4px;fill:#fff}
+.vid .cap{position:absolute;left:20px;bottom:16px;font-family:var(--fh);font-weight:650;font-size:14px;color:#fff}
+
+/* blog */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.post{display:flex;flex-direction:column;gap:12px;padding:26px 26px 24px;border-radius:var(--r);border:1px solid var(--line);background:#fff;transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.post:hover{transform:translateY(-4px);box-shadow:0 26px 50px -30px rgba(20,24,28,.35)}
+.post .tag{align-self:flex-start;font-family:var(--fh);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);background:rgba(226,32,38,.08);padding:5px 10px;border-radius:99px}
+.post h3{font-size:19px;line-height:1.3}
+.post .meta{font-size:13px;color:var(--mute);margin-top:auto}
+.post .link{padding-top:4px}
+.blog-more{margin-top:34px;text-align:center}
+
+@media (max-width:940px){.about{grid-template-columns:1fr}.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.bn{grid-template-columns:1fr;min-height:0;gap:18px}.bn-art{justify-items:start;text-align:left}.bn-art b{font-size:64px}.bn-art em{margin-top:6px}.bn-art .stack{width:100%}}
+@media (max-width:640px){.blog-grid{grid-template-columns:1fr}.vid .play{width:68px;height:68px}}
+@media (prefers-reduced-motion:reduce){.bn{transition:none}}
 </style>
 <noscript><style>.rv{opacity:1;transform:none}</style></noscript>
 </head>
@@ -569,6 +632,31 @@ details p{padding:0 54px 26px 0;font-size:15.5px;max-width:64ch}
     </div>
   </div>
 
+  <div class="wrap banners rv" role="region" aria-roledescription="carousel" aria-label="Onexar offers and products" id="banners">
+    <div class="bn-view" aria-live="off">
+      <article class="bn b1 on" aria-roledescription="slide" aria-label="1 of 4">
+        <div><small>Welcome and withdrawal bonus</small><h3>50% welcome bonus. 100% withdrawal bonus.</h3><p>Start with extra trading capital and keep rewards flowing when you withdraw. Terms apply.</p><a class="btn btn-red" href="https://www.onexar.com/">Claim your bonus <svg><use href="#i-arrow"/></svg></a></div>
+        <div class="bn-art" aria-hidden="true"><div><b>50%</b><em>Welcome bonus</em></div></div>
+      </article>
+      <article class="bn b2" aria-roledescription="slide" aria-label="2 of 4">
+        <div><small>Exclusive gold offer</small><h3>Trade gold with leverage up to 1:500</h3><p>Special XAUUSD leverage on MetaTrader 5, with raw spreads and fast execution.</p><a class="btn btn-red" href="https://www.onexar.com/">Trade gold <svg><use href="#i-arrow"/></svg></a></div>
+        <div class="bn-art" aria-hidden="true"><div><b class="gold">1:500</b><em>XAUUSD leverage</em></div></div>
+      </article>
+      <article class="bn b3" aria-roledescription="slide" aria-label="3 of 4">
+        <div><small>Swap refund</small><h3>Trade and earn with the Swap Refund programme</h3><p>Get overnight swap charges returned to you as you trade. Terms apply.</p><a class="btn btn-red" href="https://www.onexar.com/">See how it works <svg><use href="#i-arrow"/></svg></a></div>
+        <div class="bn-art" aria-hidden="true"><div class="stack"><span>Trade<i>Step 1</i></span><span>Hold overnight<i>Step 2</i></span><span>Swap refunded<i>Step 3</i></span></div></div>
+      </article>
+      <article class="bn b4" aria-roledescription="slide" aria-label="4 of 4">
+        <div><small>Smart investing</small><h3>Copy Trading, PAMM, MAM and Reverse Copy Trading</h3><p>Let experienced managers trade for you, or take the opposite side of a trader's positions.</p><a class="btn btn-red" href="#copy">Explore managed accounts <svg><use href="#i-arrow"/></svg></a></div>
+        <div class="bn-art" aria-hidden="true"><div class="stack"><span>Copy Trading<i>Mirror</i></span><span>PAMM<i>Pooled</i></span><span>MAM<i>Multi</i></span><span>Reverse Copy<i>Opposite</i></span></div></div>
+      </article>
+    </div>
+    <div class="bn-ctl">
+      <div class="bn-dots" id="bnDots"><button type="button" class="on" aria-label="Show slide 1"></button><button type="button" aria-label="Show slide 2"></button><button type="button" aria-label="Show slide 3"></button><button type="button" aria-label="Show slide 4"></button></div>
+      <div class="bn-arr"><button type="button" class="pv" id="bnPrev" aria-label="Previous slide"><svg><use href="#i-arrow"/></svg></button><button type="button" id="bnNext" aria-label="Next slide"><svg><use href="#i-arrow"/></svg></button></div>
+    </div>
+  </div>
+
   <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
   <p class="ticker-note">Prices shown on this page are illustrative and are not live market quotes.</p>
 </section>
@@ -582,6 +670,22 @@ details p{padding:0 54px 26px 0;font-size:15.5px;max-width:64ch}
       <li class="rv" style="--d:.12s"><svg><use href="#i-bolt"/></svg><div><strong>STP + ECN execution</strong><span>Transparent liquidity</span></div></li>
       <li class="rv" style="--d:.18s"><svg><use href="#i-chart"/></svg><div><strong>MetaTrader 5</strong><span>iOS, Android, Windows, Mac</span></div></li>
     </ul>
+  </div>
+</section>
+
+<!-- about video -->
+<section class="soft" id="about">
+  <div class="wrap about">
+    <div class="rv">
+      <span class="eyebrow">About Onexar</span>
+      <h2 style="margin-top:16px">Meet the broker behind your trades</h2>
+      <p class="lead">Watch a short introduction to Onexar: who we are, how we work and what you can expect when you trade with us.</p>
+      <a class="link" style="margin-top:22px" href="https://www.onexar.com/">Learn more about us <svg><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="vid rv" style="--d:.1s" id="vid" data-id="sgdmoHa_prM">
+      <img src="https://i.ytimg.com/vi/sgdmoHa_prM/hqdefault.jpg" alt="" loading="lazy">
+      <button type="button" aria-label="Play the About Onexar video"><span class="play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span><span class="cap">About Onexar</span></button>
+    </div>
   </div>
 </section>
 
@@ -710,7 +814,7 @@ details p{padding:0 54px 26px 0;font-size:15.5px;max-width:64ch}
     <div class="rv">
       <span class="eyebrow">Managed accounts</span>
       <h2 style="margin-top:16px">Let professionals manage your trades</h2>
-      <p class="lead">Follow experienced traders and copy their strategies automatically, or allocate funds to a manager through PAMM and MAM. No manual trading required.</p>
+      <p class="lead">Follow experienced traders and copy their strategies automatically, or allocate funds to a manager through PAMM and MAM. Reverse Copy Trading lets you take the opposite side. No manual trading required.</p>
       <ul class="checks">
         <li><svg><use href="#i-check"/></svg><span><strong>Ideal for beginners.</strong> Start without building a strategy of your own.</span></li>
         <li><svg><use href="#i-check"/></svg><span><strong>Automated trading.</strong> Positions mirror your chosen trader in real time.</span></li>
@@ -721,6 +825,7 @@ details p{padding:0 54px 26px 0;font-size:15.5px;max-width:64ch}
         <div><strong>Copy Trading</strong><span>Mirror a trader's positions</span></div>
         <div><strong>PAMM</strong><span>Pooled, percentage-based allocation</span></div>
         <div><strong>MAM</strong><span>Multi-account management</span></div>
+        <div><strong>Reverse Copy Trading<em>New</em></strong><span>Take the opposite side of a trader's positions</span></div>
       </div>
     </div>
     <div class="board rv" style="--d:.12s" aria-hidden="true">
@@ -847,6 +952,26 @@ details p{padding:0 54px 26px 0;font-size:15.5px;max-width:64ch}
         <p>For illustration only. Returns are not guaranteed and trading leveraged products can result in the loss of your capital.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- blog -->
+<section class="soft" id="blog">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Blog</span>
+      <h2>Forex news and trading insights</h2>
+      <p class="lead">The latest articles from the Onexar team.</p>
+    </div>
+    <div class="blog-grid">
+      <article class="post rv"><span class="tag">Trading</span><h3>Trade Smarter With Onexar: Save Time, Money, And Effort</h3><span class="meta">By Admin · Nov 10, 2026</span><a class="link" href="https://www.onexar.com/blogs/trade-smarter-with-onexar-save-time-money-and-effort">Read more <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="post rv" style="--d:0.07s"><span class="tag">Copy trading</span><h3>Onexar Reverse Copy Trading: How It Works, Benefits, And Risks</h3><span class="meta">By Admin · Oct 29, 2026</span><a class="link" href="https://www.onexar.com/blogs/onexar-reverse-copy-trading-how-it-works-benefits-and-risks">Read more <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="post rv" style="--d:0.14s"><span class="tag">Gold</span><h3>TRADE Gold Leverage Upto 500 Leverage An Exclusive ONEXAR</h3><span class="meta">By Admin · Oct 26, 2026</span><a class="link" href="https://www.onexar.com/blogs/trade-gold-leverage-upto-500-leverage-an-exclusive-onexar">Read more <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="post rv"><span class="tag">Gold</span><h3>ONEXAR Introduces Special Gold Leverage Upto 500</h3><span class="meta">By Admin · Oct 23, 2026</span><a class="link" href="https://www.onexar.com/blogs/onexar-introduces-special-gold-leverage-upto-500">Read more <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="post rv" style="--d:0.07s"><span class="tag">Education</span><h3>Can AI Create A Profitable Forex Trading Robot?</h3><span class="meta">By Admin · Oct 05, 2026</span><a class="link" href="https://www.onexar.com/blogs/can-ai-create-a-profitable-forex-trading-robot">Read more <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="post rv" style="--d:0.14s"><span class="tag">Education</span><h3>Top 10 Books For Forex Traders</h3><span class="meta">By Admin · Sep 28, 2026</span><a class="link" href="https://www.onexar.com/blogs/top-10-books-for-forex-traders">Read more <svg><use href="#i-arrow"/></svg></a></article>
+    </div>
+    <div class="blog-more rv"><a class="btn btn-dark" href="https://www.onexar.com/forex-blog.php">View all articles <svg><use href="#i-arrow"/></svg></a></div>
   </div>
 </section>
 
@@ -989,6 +1114,41 @@ if(!RM&&'IntersectionObserver' in window){
     (function step(now){const p=Math.min(1,(now-t0)/1400),v=Math.round(t*(1-Math.pow(1-p,3)));e.target.textContent=v+suf;if(p<1)requestAnimationFrame(step)})(t0)}),{threshold:.6});
   $$('[data-count]').forEach(e=>co.observe(e));
 }
+
+/* hero banners */
+(function(){
+  const sl=$$('#banners .bn'),dots=$$('#bnDots button');if(!sl.length)return;
+  const box=$('#bnDots');if(RM)box.classList.add('rm');
+  let i=0,t=null,hov=false;
+  function go(n){i=(n+sl.length)%sl.length;sl.forEach((e,k)=>{e.classList.toggle('on',k===i);e.setAttribute('aria-hidden',k===i?'false':'true')});
+    dots.forEach((d,k)=>{d.classList.remove('on');if(k===i){void d.offsetWidth;d.classList.add('on')}});}
+  function play(){clearTimeout(t);if(RM||hov||document.hidden)return;t=setTimeout(()=>{go(i+1);play()},6000)}
+  $('#bnNext').addEventListener('click',()=>{go(i+1);play()});
+  $('#bnPrev').addEventListener('click',()=>{go(i-1);play()});
+  dots.forEach((d,k)=>d.addEventListener('click',()=>{go(k);play()}));
+  const b=$('#banners');
+  b.addEventListener('mouseenter',()=>{hov=true;clearTimeout(t)});
+  b.addEventListener('mouseleave',()=>{hov=false;go(i);play()});
+  b.addEventListener('focusin',()=>{hov=true;clearTimeout(t)});
+  b.addEventListener('focusout',()=>{hov=false;play()});
+  b.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){go(i+1);play()}if(e.key==='ArrowLeft'){go(i-1);play()}});
+  let x0=null;
+  b.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
+  b.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>40){go(i+(dx<0?1:-1));play()}},{passive:true});
+  document.addEventListener('visibilitychange',()=>{go(i);play()});
+  go(0);play();
+})();
+
+/* about video: load the player only on click */
+(function(){
+  const v=$('#vid');if(!v)return;
+  v.querySelector('button').addEventListener('click',()=>{
+    const f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/'+v.dataset.id+'?autoplay=1&rel=0';
+    f.title='About Onexar';f.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';f.allowFullscreen=true;
+    v.innerHTML='';v.appendChild(f);
+  });
+})();
 
 /* hero candlestick chart (illustrative) */
 (function(){
